@@ -1,5 +1,5 @@
-import {Entity, Column, PrimaryGeneratedColumn, BaseEntity, OneToMany} from "typeorm";
-import { ProducthasIngredient } from "./ProducthasIngredient";
+import {Entity, Column, PrimaryGeneratedColumn, BaseEntity, OneToMany, OneToOne} from "typeorm";
+import { ProductHasIngredient } from "./ProductHasIngredient";
 import { Stock } from "./Stock";
 
 @Entity()
@@ -17,9 +17,9 @@ export class Ingredient extends BaseEntity {
     @Column()
     isRemovable: boolean;
 
-    @OneToMany(type => ProducthasIngredient, producthasingredient => producthasingredient.ingredient)
-    producthasingredients: ProducthasIngredient[];
+    @OneToMany(type => ProductHasIngredient, productHasIngredient => productHasIngredient.ingredient)
+    productHasIngredients: ProductHasIngredient[];
 
-    @OneToMany(type => Stock, stock => stock.ingredient)
-    stocks: Stock[];
+    @OneToOne(type => Stock, stock => stock.ingredient)
+    stock: Stock;
 }

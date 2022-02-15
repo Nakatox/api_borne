@@ -1,18 +1,23 @@
 import { User } from '../Models/User';
 import * as sha512 from 'js-sha512';
 import * as jwt from 'jsonwebtoken';
-import express from 'express';
+import express, { Request, Response } from 'express';
 require('dotenv').config();
 
 let router = express.Router();
 
-router.post('/auth', async (req, res) => {
+router.post('/auth', async (req: Request, res: Response) => {
 
-    let user = await User.findOne({where: { email: req.body.email, password: sha512.sha512(req.body.password)}})
+    let user = await User.findOne({where: { name: req.body.name, password: sha512.sha512(req.body.password)}})
 
-    let token = jwt.sign({id: user.id}, process.env.HASH_PASSWORD)
+    if (user){
+        let token = jwt.sign({id: user.id}, process.env.HASH_PASSWORD)
 
-    res.json({status: 200, data: token});
+        res.json({status: 200, token: token});
+    }else{
+        res.json({status: 500, data: 'bad credentials'});
+    }
+
 })
 
 export default router;

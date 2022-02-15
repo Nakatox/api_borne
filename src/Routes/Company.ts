@@ -1,5 +1,5 @@
 import { Company } from "../Models/Company";
-import express from 'express';
+import express, { Request, Response } from 'express';
 import { checkRoleMidlewareAdmin } from "../Services/CheckRole";
 import { CompagnyValidator } from "../Validator/CompagnyValidator";
 import * as validator from 'express-validator';
@@ -8,7 +8,7 @@ import * as validator from 'express-validator';
 
 let router = express.Router();
 
-router.post('/company', CompagnyValidator, (req, res) => {
+router.post('/company', CompagnyValidator, (req: Request, res: Response) => {
 
     const errors = validator.validationResult(req);
 

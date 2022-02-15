@@ -4,9 +4,9 @@ require('dotenv').config();
 import { Company } from "./Models/Company";
 import { Ingredient } from "./Models/Ingredient";
 import { Order } from "./Models/Order";
-import { OrderhasProduct } from "./Models/OrderhasProduct";
+import { OrderHasProduct } from "./Models/OrderHasProduct";
 import { Product } from "./Models/Product";
-import { ProducthasIngredient } from "./Models/ProducthasIngredient";
+import { ProductHasIngredient } from "./Models/ProductHasIngredient";
 import { Role } from "./Models/Role";
 import { State } from "./Models/State";
 import { Stock } from "./Models/Stock";
@@ -23,9 +23,9 @@ export const connexion = () => createConnection({
         Company,
         Ingredient,
         Order,
-        OrderhasProduct,
+        OrderHasProduct,
         Product,
-        ProducthasIngredient,
+        ProductHasIngredient,
         Role,
         Stock,
         User,

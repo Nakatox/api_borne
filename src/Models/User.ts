@@ -1,4 +1,4 @@
-import {Entity, Column, PrimaryGeneratedColumn, BaseEntity, ManyToOne, OneToMany} from "typeorm";
+import {Entity, Column, PrimaryGeneratedColumn, BaseEntity, ManyToOne, OneToMany, JoinColumn} from "typeorm";
 import { Company } from "./Company";
 import { Order } from "./Order";
 import {Role} from "./Role";
@@ -15,12 +15,20 @@ export class User extends BaseEntity {
     @Column()
     password: string;
 
+    @Column({name: 'roleid'})
+    roleId: number;
+
+    @Column({name: 'companyid'})
+    companyId: number;
+
     @ManyToOne(type => Role, role => role.users)
+    @JoinColumn({name: "roleid"})
     role: Role;
 
     @OneToMany(type => Order, order => order.user)
-    orders: Order;
+    orders: Order[];
 
     @ManyToOne(type => Company, company => company.users)
+    @JoinColumn({name: "companyid"})
     company: Company;
 }

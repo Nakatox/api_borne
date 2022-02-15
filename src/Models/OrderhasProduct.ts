@@ -3,14 +3,14 @@ import {Product} from "./Product";
 import {Order} from "./Order";
 
 @Entity()
-export class OrderhasProduct extends BaseEntity {
+export class OrderHasProduct extends BaseEntity {
     
     @PrimaryGeneratedColumn()
     id: number;
 
-    @ManyToOne(type => Order, order => order.orderhasproducts)
+    @ManyToOne(type => Order, order => order.orderHasProducts)
     order: Order;
 
-    @ManyToOne(type => Product, product => product.orderhasproducts)
+    @ManyToOne(type => Product, product => product.orderHasProducts)
     product: Product;
 }

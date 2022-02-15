@@ -1,5 +1,5 @@
 import {Entity, Column, PrimaryGeneratedColumn, BaseEntity, OneToMany, ManyToOne} from "typeorm";
-import { OrderhasProduct } from "./OrderhasProduct";
+import { OrderHasProduct } from "./OrderHasProduct";
 import { State } from "./State";
 import { User } from "./User";
 
@@ -15,8 +15,8 @@ export class Order extends BaseEntity {
     @Column()
     totalPrice: number;
 
-    @OneToMany(type => OrderhasProduct, orderhasproduct => orderhasproduct.order)
-    orderhasproducts: OrderhasProduct[];
+    @OneToMany(type => OrderHasProduct, orderHasProduct => orderHasProduct.order)
+    orderHasProducts: OrderHasProduct[];
 
     @ManyToOne(type => State, state => state.orders)
     state: State;

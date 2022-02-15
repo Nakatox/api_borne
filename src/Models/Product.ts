@@ -1,7 +1,7 @@
-import {Entity, Column, PrimaryGeneratedColumn, BaseEntity, OneToMany, ManyToOne} from "typeorm";
+import {Entity, Column, PrimaryGeneratedColumn, BaseEntity, OneToMany, ManyToOne, JoinColumn} from "typeorm";
 import { Company } from "./Company";
-import { OrderhasProduct } from "./OrderhasProduct";
-import { ProducthasIngredient } from "./ProducthasIngredient";
+import { OrderHasProduct } from "./OrderHasProduct";
+import { ProductHasIngredient } from "./ProductHasIngredient";
 @Entity()
 export class Product extends BaseEntity {
     
@@ -17,17 +17,19 @@ export class Product extends BaseEntity {
     @Column()
     isCustom: boolean;
 
-    @OneToMany(type => OrderhasProduct, orderhasproduct => orderhasproduct.product)
-    orderhasproducts: OrderhasProduct[];
+    @Column()
+    picture: string;
 
-    @OneToMany(type => ProducthasIngredient, producthasingredient => producthasingredient.product)
-    producthasingredients: ProducthasIngredient[];
+    @Column({name: "companyid"})
+    companyId: number;
+
+    @OneToMany(type => OrderHasProduct, orderHasProduct => orderHasProduct.product)
+    orderHasProducts: OrderHasProduct[];
+
+    @OneToMany(type => ProductHasIngredient, productHasIngredient => productHasIngredient.product)
+    productHasIngredients: ProductHasIngredient[];
 
     @ManyToOne(type => Company , company => company.products)
+    @JoinColumn({name: "companyid"})
     company: Company;
-
-    @ManyToOne(type => Product, product => product.products)
-    products: Product[];
-
-
 }
