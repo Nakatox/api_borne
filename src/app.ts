@@ -11,6 +11,7 @@ import CompagnyRoute from './Routes/Company';
 import UserRoute from './Routes/User';
 import AuthRoute from './Routes/Auth';
 import OrderRoute from './Routes/Order';
+import IngredientRoute from './Routes/Ingredient';
 
 // connexion to the database
 import { connexion } from './database';
@@ -62,6 +63,7 @@ app.use(ProductRoute);
 app.use(CompagnyRoute);
 app.use(UserRoute);
 app.use(OrderRoute);
+app.use(IngredientRoute);
 
 // port
 server.listen(8000);

@@ -1,0 +1,143 @@
+entity: ProductHasIngredient
+items:
+  productHasIngredient1:
+    product: '@product1'
+    ingredient: '@ingredient1'
+  
+  productHasIngredient2:
+    product: '@product1'
+    ingredient: '@ingredient3'
+
+  productHasIngredient3:
+    product: '@product1'
+    ingredient: '@ingredient7'
+
+  productHasIngredient4:
+    product: '@product1'
+    ingredient: '@ingredient9'
+
+  productHasIngredient5:
+    product: '@product1'
+    ingredient: '@ingredient11'
+
+  productHasIngredient6:
+    product: '@product2'
+    ingredient: '@ingredient12'
+
+  productHasIngredient7:
+    product: '@product2'
+    ingredient: '@ingredient1'
+
+  productHasIngredient8:
+    product: '@product2'
+    ingredient: '@ingredient3'
+
+  productHasIngredient9:
+    product: '@product2'
+    ingredient: '@ingredient7'
+
+  productHasIngredient10:
+    product: '@product3'
+    ingredient: '@ingredient9'
+
+  productHasIngredient11:
+    product: '@product3'
+    ingredient: '@ingredient11'
+
+  productHasIngredient12:
+    product: '@product3'
+    ingredient: '@ingredient12'
+
+  productHasIngredient13:
+    product: '@product4'
+    ingredient: '@ingredient1'
+
+  productHasIngredient14:
+    product: '@product4'
+    ingredient: '@ingredient3'
+
+  productHasIngredient15:
+    product: '@product4'
+    ingredient: '@ingredient7'
+  
+  productHasIngredient16:
+    product: '@product4'
+    ingredient: '@ingredient9'
+
+  productHasIngredient17:
+    product: '@product5'
+    ingredient: '@ingredient11'
+
+  productHasIngredient18:
+    product: '@product5'
+    ingredient: '@ingredient12'
+  
+  productHasIngredient19:
+    product: '@product6'
+    ingredient: '@ingredient1'
+  
+  productHasIngredient20:
+    product: '@product6'
+    ingredient: '@ingredient3'
+
+  productHasIngredient21:
+    product: '@product6'
+    ingredient: '@ingredient7'
+
+  productHasIngredient22:
+    product: '@product7'
+    ingredient: '@ingredient1'
+  
+  productHasIngredient23:
+    product: '@product7'
+    ingredient: '@ingredient3'
+
+  productHasIngredient24:
+    product: '@product7'
+    ingredient: '@ingredient7'
+  
+  productHasIngredient25:
+    product: '@product7'
+    ingredient: '@ingredient9'
+  
+  productHasIngredient26:
+    product: '@product8'
+    ingredient: '@ingredient1'
+  
+  productHasIngredient27:
+    product: '@product8'
+    ingredient: '@ingredient3'
+
+  productHasIngredient28:
+    product: '@product8'
+    ingredient: '@ingredient7'
+  
+  productHasIngredient29:
+    product: '@product8'
+    ingredient: '@ingredient9'
+  
+  productHasIngredient30:
+    product: '@product9'
+    ingredient: '@ingredient1'
+  
+  productHasIngredient31:
+    product: '@product9'
+    ingredient: '@ingredient3'
+
+  productHasIngredient32:
+    product: '@product9'
+    ingredient: '@ingredient7'
+  
+  productHasIngredient33:
+    product: '@product9'
+    ingredient: '@ingredient9'
+  
+  productHasIngredient34:
+    product: '@product9'
+    ingredient: '@ingredient11'
+  
+  productHasIngredient35:
+    product: '@product9'
+    ingredient: '@ingredient12'
+
+  

@@ -1,0 +1,9 @@
+
+entity: State
+items:
+  state1:
+    name: "in progress"
+  
+  state2:
+    name: "done"
+

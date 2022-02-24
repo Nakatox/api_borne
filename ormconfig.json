@@ -1,0 +1,12 @@
+{
+    "type": "mysql",
+    "host": "localhost",
+    "port": 8889,
+    "username": "root",
+    "password": "root",
+    "database": "api_borne",
+    "synchronize": true,
+    "entities": [
+        "src/Models/**/*.{ts,js}"
+    ]
+}

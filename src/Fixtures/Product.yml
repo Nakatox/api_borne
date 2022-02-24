@@ -1,0 +1,64 @@
+entity: Product
+items:
+  product1:
+    name: Hawai
+    price: 12
+    isCustom: false
+    company: '@company1'
+    picture : ""
+
+  product2:
+    name: Parma
+    price: 11
+    isCustom: false
+    company: '@company1'
+    picture : ""
+
+  product3:
+    name: Napoli
+    price: 10
+    isCustom: false
+    company: '@company1'
+    picture : ""
+  
+  product4:
+    name: Sicilia
+    price: 15
+    isCustom: true
+    company: '@company1'
+    picture : ""
+
+  product5:
+    name: Greek
+    price: 14
+    isCustom: false
+    company: '@company1'
+    picture : ""
+
+  product6:
+    name: Margherita
+    price: 13
+    isCustom: false
+    company: '@company1'
+    picture : ""
+
+  product7:
+    name: Vegetarian
+    price: 12
+    isCustom: false
+    company: '@company1'
+    picture : ""
+  
+  product8:
+    name: California
+    price: 12
+    isCustom: false
+    company: '@company1'
+    picture : ""
+
+  product9:
+    name: Detroit
+    price: 10
+    isCustom: false
+    company: '@company1'
+    picture : ""

@@ -43,4 +43,8 @@ router.delete('/users/:id', checkRoleMidlewareAdmin, async (req: Request, res: R
     res.json({status: 200, data: user});
 })
 
+router.get('/users/me', async (req: Request, res: Response) => {
+    res.json({status: 200, data: req.user});
+})
+
 export default router;

@@ -1,0 +1,68 @@
+entity: Ingredient
+items: 
+  ingredient1:
+    name: lardon
+    price: 2.5
+    isRemovable: true
+  
+  ingredient2:
+    name: fromage
+    price: 1.5
+    isRemovable: true
+  
+  ingredient3:
+    name: oignon
+    price: 0.5
+    isRemovable: true
+  
+  ingredient4:
+    name: salade
+    price: 1.5
+    isRemovable: true
+  
+  ingredient5:
+    name: tomate
+    price: 3
+    isRemovable: true
+  
+  ingredient6:
+    name: mozzarella
+    price: 1
+    isRemovable: true
+  
+  ingredient7:
+    name: jambon
+    price: 2
+    isRemovable: true
+  
+  ingredient8:
+    name: champignon
+    price: 1
+    isRemovable: true
+  
+  ingredient9:
+    name: oeuf
+    price: 1.5
+    isRemovable: true
+  
+  ingredient10:
+    name: poulet
+    price: 3
+    isRemovable: true
+
+  ingredient11:
+    name: bacon
+    price: 2
+    isRemovable: true
+  
+  ingredient12:
+    name: chorizo
+    price: 1
+    isRemovable: true
+
+  ingredient13:
+    name: annanas
+    price: 3
+    isRemovable: true
+
+

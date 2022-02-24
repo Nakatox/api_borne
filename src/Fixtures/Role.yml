@@ -1,0 +1,9 @@
+
+entity: Role
+items:
+  admin:
+    name: admin
+  user:
+    name: user
+  kitchen:
+    name: kitchen

@@ -15,6 +15,9 @@ export class Order extends BaseEntity {
     @Column()
     totalPrice: number;
 
+    @Column()
+    orderNumber: string;
+
     @OneToMany(type => OrderHasProduct, orderHasProduct => orderHasProduct.order)
     orderHasProducts: OrderHasProduct[];
 
