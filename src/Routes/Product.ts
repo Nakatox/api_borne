@@ -8,6 +8,7 @@ import { Ingredient } from "../Models/Ingredient";
 import { Stock } from "../Models/Stock";
 import { Company } from "../Models/Company";
 import { User } from "../Models/User";
+import { OrderHasProduct } from "../Models/OrderHasProduct";
 
 let router = express.Router();
 
@@ -18,7 +19,7 @@ router.get('/products',  async (req: Request, res: Response) => {
     return res.json({status:200,data:products})
 })
 
-router.post('/products',checkRoleMidlewareAdmin, ProductValidator, async (req: Request, res: Response) => {
+router.post('/products', ProductValidator, async (req: Request, res: Response) => {
 
     const errors = validator.validationResult(req);
 
@@ -26,38 +27,87 @@ router.post('/products',checkRoleMidlewareAdmin, ProductValidator, async (req: R
         let product = new Product();
         product.name = req.body.name;
         product.price = req.body.price;
-        product.isCustom = req.body.isCustom;
+        product.isCustom = req.user.roleId !== 1;
         product.companyId = req.user.companyId;
+        product.picture = req.body.picture;
 
         let productCreated = await product.save();
 
-        req.body.ingredients.forEach(async (element: number) => {
-            const ingredient = await Ingredient.findOne({where:{id:element}});
+        for (let index = 0; index < req.body.ingredients.length; index++) {
+            const element = req.body.ingredients[index];
+            const ingredient = await Ingredient.findOne({where:{id:element.id}});
             let productHasIngredient = new ProductHasIngredient();
             productHasIngredient.product = productCreated;
             productHasIngredient.ingredient = ingredient;
             let producthasingredientCreated = await productHasIngredient.save();
-        });
+        }
 
-        res.json({status: 200, data: product});
+        const productCreatedWithIngredients = await Product.findOne({where:{id:productCreated.id}, relations: ["productHasIngredients", "productHasIngredients.ingredient", "productHasIngredients.ingredient.stock"]})
+
+        res.json({status: 200, data: productCreatedWithIngredients});
     }else{
         res.status(400).json({ errors: errors.array() });
     }
 });
 
-router.put('/products/:id',checkRoleMidlewareAdmin, ProductValidator, async (req: Request, res: Response) => {
+router.put('/products/:id',checkRoleMidlewareAdmin, async (req: Request, res: Response) => {
 
-    const errors = validator.validationResult(req);
+    let product = await Product.findOne({where:{id:req.params.id}});
+    product.name = req.body.name;
+    product.price = req.body.price;
+    product.isCustom = req.body.isCustom;
+    console.log(req.body.ingredients);
+    
+    if(req.body.ingredients){
 
-    if (errors.isEmpty()) {
-        let product = await Product.update(req.params.id, req.body);
-        res.json({status: 200, data: product});
-    }else{
-        res.status(400).json({ errors: errors.array() });
+        let newIngredients = req.body.ingredients;
+        let oldIngredients = await ProductHasIngredient.find({where:{productId:product.id}});
+        
+        for (let index = 0; index < oldIngredients.length; index++) {
+            const element = oldIngredients[index];
+            if(!newIngredients.includes(element.ingredientId)){
+                console.log("to remove");
+                
+                console.log(element);
+                
+                await element.remove();
+            }
+        }
+
+        for (let index = 0; index < newIngredients.length; index++) {
+            const element = newIngredients[index];
+            if(!oldIngredients.map((element: ProductHasIngredient) => element.ingredientId).includes(element)){
+                console.log("to add");
+                
+                console.log(element);
+                let productHasIngredient = new ProductHasIngredient();
+                productHasIngredient.product = product;
+                productHasIngredient.ingredient = element;
+                let producthasingredientCreated = await productHasIngredient.save();
+            }
+        }
+    
     }
+
+    let productUpdated = await product.save();
+    
+    res.json({status: 200, data: productUpdated});
+    
 })
 
 router.delete('/products/:id', checkRoleMidlewareAdmin, async (req: Request, res: Response) => {
+    // delete all productHasIngredients
+    let productHasIngredients = await ProductHasIngredient.find({where:{productId:req.params.id}});
+    for (let index = 0; index < productHasIngredients.length; index++) {
+        const element = productHasIngredients[index];
+        await element.remove();
+    }
+    // delete all orderHasProducts
+    let orderHasProducts = await OrderHasProduct.find({where:{productId:req.params.id}});
+    for (let index = 0; index < orderHasProducts.length; index++) {
+        const element = orderHasProducts[index];
+        await element.remove();
+    }
     let product = await Product.delete(req.params.id);
     res.json({status: 200, data: product});
 })

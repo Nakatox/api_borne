@@ -18,7 +18,7 @@ items:
 
   productHasIngredient5:
     product: '@product1'
-    ingredient: '@ingredient11'
+    ingredient: '@ingredient13'
 
   productHasIngredient6:
     product: '@product2'

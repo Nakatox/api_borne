@@ -27,7 +27,7 @@ router.post('/orders', async (req: Request, res: Response) => {
     order.totalPrice = req.body.totPrice;
     order.state = state;
     order.user = req.user;
-    order.orderNumber = shortUUID.generate();
+    order.orderNumber = shortUUID.generate().substring(0, 4).toLowerCase();
 
     let orderCreated = await order.save();
 
@@ -99,7 +99,8 @@ router.put('/orders/:id', async (req: Request, res: Response) => {
 
 router.put('/orders/:id/done', async (req: Request, res: Response) => {
     let order = await Order.findOne(req.params.id);
-    order.state.id = 2
+    let state = await State.findOne({where:{name:"done"}});
+    order.state = state;
     order.save()
     
     res.json({status: 200, data: order});

@@ -23,10 +23,10 @@ export class Product extends BaseEntity {
     @Column({name: "companyid"})
     companyId: number;
 
-    @OneToMany(type => OrderHasProduct, orderHasProduct => orderHasProduct.product)
+    @OneToMany(type => OrderHasProduct, orderHasProduct => orderHasProduct.product, { onDelete: 'CASCADE' })
     orderHasProducts: OrderHasProduct[];
 
-    @OneToMany(type => ProductHasIngredient, productHasIngredient => productHasIngredient.product)
+    @OneToMany(type => ProductHasIngredient, productHasIngredient => productHasIngredient.product, { onDelete: 'CASCADE' })
     productHasIngredients: ProductHasIngredient[];
 
     @ManyToOne(type => Company , company => company.products)

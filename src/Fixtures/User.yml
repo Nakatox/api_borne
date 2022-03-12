@@ -3,17 +3,17 @@ items:
   user1:
     name: "user"
     password: "99adc231b045331e514a516b4b7680f588e3823213abe901738bc3ad67b2f6fcb3c64efb93d18002588d3ccc1a49efbae1ce20cb43df36b38651f11fa75678e8"
-    roles: '@user'
+    role: '@user'
     company: '@company1'
 
   root1:
     name: "root"
     password: "99adc231b045331e514a516b4b7680f588e3823213abe901738bc3ad67b2f6fcb3c64efb93d18002588d3ccc1a49efbae1ce20cb43df36b38651f11fa75678e8"
-    roles: '@admin'
+    role: '@admin'
     company: '@company1'
   
   kitchen1:
     name: "kitchen"
     password: "99adc231b045331e514a516b4b7680f588e3823213abe901738bc3ad67b2f6fcb3c64efb93d18002588d3ccc1a49efbae1ce20cb43df36b38651f11fa75678e8"
-    roles: '@kitchen'
+    role: '@kitchen'
     company: '@company1'

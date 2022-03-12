@@ -20,6 +20,6 @@ export class Ingredient extends BaseEntity {
     @OneToMany(type => ProductHasIngredient, productHasIngredient => productHasIngredient.ingredient)
     productHasIngredients: ProductHasIngredient[];
 
-    @OneToOne(type => Stock, stock => stock.ingredient)
+    @OneToOne(type => Stock, stock => stock.ingredient, { onDelete: 'CASCADE' })
     stock: Stock;
 }

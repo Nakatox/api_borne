@@ -1,0 +1,54 @@
+entity: Stock
+items:
+  stock1:
+    quantity: 100
+    ingredient: '@ingredient1'
+    company: '@company1'
+  stock2:
+    quantity: 100
+    ingredient: '@ingredient2'
+    company: '@company1'
+  stock3:
+    quantity: 100
+    ingredient: '@ingredient3'
+    company: '@company1'
+  stock4:
+    quantity: 100
+    ingredient: '@ingredient4'
+    company: '@company1'
+  stock5:
+    quantity: 100
+    ingredient: '@ingredient5'
+    company: '@company1'
+  stock6:
+    quantity: 100
+    ingredient: '@ingredient6'
+    company: '@company1'  
+  stock7:
+    quantity: 100
+    ingredient: '@ingredient7'
+    company: '@company1'
+  stock8:
+    quantity: 100
+    ingredient: '@ingredient8'
+    company: '@company1'
+  stock9:
+    quantity: 100
+    ingredient: '@ingredient9'
+    company: '@company1'
+  stock10:
+    quantity: 100
+    ingredient: '@ingredient10'
+    company: '@company1'
+  stock11:
+    quantity: 100
+    ingredient: '@ingredient11'
+    company: '@company1'
+  stock12:
+    quantity: 100
+    ingredient: '@ingredient12'
+    company: '@company1'
+  stock13:
+    quantity: 100
+    ingredient: '@ingredient13'
+    company: '@company1'
