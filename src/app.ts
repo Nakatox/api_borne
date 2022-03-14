@@ -12,6 +12,7 @@ import UserRoute from './Routes/User';
 import AuthRoute from './Routes/Auth';
 import OrderRoute from './Routes/Order';
 import IngredientRoute from './Routes/Ingredient';
+import OrderHasProductRoute from './Routes/OrderHasProduct';
 
 // connexion to the database
 import { connexion } from './database';
@@ -41,6 +42,7 @@ declare global {
         }
     }
 }
+global.io = io;
 
 app.use(async (req: Request, res: Response, next: NextFunction) => {
     
@@ -64,6 +66,7 @@ app.use(CompagnyRoute);
 app.use(UserRoute);
 app.use(OrderRoute);
 app.use(IngredientRoute);
+app.use(OrderHasProductRoute);
 
 // port
 server.listen(8000);

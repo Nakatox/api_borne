@@ -1,6 +1,7 @@
-import {Entity, Column, PrimaryGeneratedColumn, BaseEntity, ManyToOne, JoinColumn, OneToOne} from "typeorm";
+import {Entity, Column, PrimaryGeneratedColumn, BaseEntity, ManyToOne, JoinColumn, OneToOne, AfterUpdate} from "typeorm";
 import { Company } from "./Company";
 import { Ingredient } from "./Ingredient";
+import { transport } from "../email";
 
 @Entity()
 export class Stock extends BaseEntity {
@@ -25,4 +26,20 @@ export class Stock extends BaseEntity {
     @JoinColumn({name: "ingredientid"})
     ingredient: Ingredient;
 
+    @AfterUpdate()
+    updateStock() {
+        global.io.emit('stockUpdate', {
+            id: this.id,
+            ingredient: this.ingredientId,
+            quantity: this.quantity
+        });     
+        if (this.quantity < 5) {
+            transport.sendMail({
+                from: "server@gmail.com",
+                to: "admin@gmail.com",
+                subject: "Low stock",
+                text: "The stock of ingredient " + this.ingredientId + " is low, please restock it"
+            });
+        }
+    }
 }

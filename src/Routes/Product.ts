@@ -66,10 +66,6 @@ router.put('/products/:id',checkRoleMidlewareAdmin, async (req: Request, res: Re
         for (let index = 0; index < oldIngredients.length; index++) {
             const element = oldIngredients[index];
             if(!newIngredients.includes(element.ingredientId)){
-                console.log("to remove");
-                
-                console.log(element);
-                
                 await element.remove();
             }
         }
@@ -77,9 +73,6 @@ router.put('/products/:id',checkRoleMidlewareAdmin, async (req: Request, res: Re
         for (let index = 0; index < newIngredients.length; index++) {
             const element = newIngredients[index];
             if(!oldIngredients.map((element: ProductHasIngredient) => element.ingredientId).includes(element)){
-                console.log("to add");
-                
-                console.log(element);
                 let productHasIngredient = new ProductHasIngredient();
                 productHasIngredient.product = product;
                 productHasIngredient.ingredient = element;
@@ -96,13 +89,12 @@ router.put('/products/:id',checkRoleMidlewareAdmin, async (req: Request, res: Re
 })
 
 router.delete('/products/:id', checkRoleMidlewareAdmin, async (req: Request, res: Response) => {
-    // delete all productHasIngredients
     let productHasIngredients = await ProductHasIngredient.find({where:{productId:req.params.id}});
     for (let index = 0; index < productHasIngredients.length; index++) {
         const element = productHasIngredients[index];
         await element.remove();
     }
-    // delete all orderHasProducts
+
     let orderHasProducts = await OrderHasProduct.find({where:{productId:req.params.id}});
     for (let index = 0; index < orderHasProducts.length; index++) {
         const element = orderHasProducts[index];

@@ -60,5 +60,4 @@ router.delete('/ingredients/:id',checkRoleMidlewareAdmin, async (req: Request, r
     return res.json({status:200,data:ingredientDeleted});
 })
 
-
 export default router;
