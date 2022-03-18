@@ -65,4 +65,9 @@ items:
     price: 3
     isRemovable: true
 
+  ingredient14:
+    name: pate
+    price: 2
+    isRemovable: false
+
 

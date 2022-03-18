@@ -52,3 +52,8 @@ items:
     quantity: 100
     ingredient: '@ingredient13'
     company: '@company1'
+
+  stock14:
+    quantity: 100
+    ingredient: '@ingredient14'
+    company: '@company1'

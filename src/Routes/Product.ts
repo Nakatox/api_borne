@@ -56,7 +56,6 @@ router.put('/products/:id',checkRoleMidlewareAdmin, async (req: Request, res: Re
     product.name = req.body.name;
     product.price = req.body.price;
     product.isCustom = req.body.isCustom;
-    console.log(req.body.ingredients);
     
     if(req.body.ingredients){
 

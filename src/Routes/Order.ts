@@ -36,8 +36,12 @@ router.post('/orders', async (req: Request, res: Response) => {
     for (let index = 0; index < req.body.products.length; index++) {
         const element = req.body.products[index];
         let product = await Product.findOne({where:{id:element[0].id},relations:['productHasIngredients']});
-        let isCustom = (element[2] != product.price || element[1].length != product.productHasIngredients.length);
-        
+        let isCustom: boolean
+        if (product) {
+            isCustom = (element[2] != product.price || element[1].length != product.productHasIngredients.length);
+        } else {
+            isCustom = true;
+        }
         if (isCustom) {
             
             const productCustoms = await Product.find({relations:['productHasIngredients'], where:{isCustom:true}});
@@ -131,7 +135,7 @@ router.post('/orders', async (req: Request, res: Response) => {
             from: "server@gmail.com",
             to: req.body.userEmail,
             subject: "Low stock",
-            text: htmlOrder
+            html: htmlOrder
         });
     }
 

@@ -20,13 +20,15 @@ router.post('/ingredients',  async (req: Request, res: Response) => {
     ingredient.name = req.body.name;
     ingredient.price = req.body.price;
     ingredient.isRemovable = req.body.isRemovable;
+    await ingredient.save();
 
-    let quantity = req.body.quantity;
     let stock = new Stock();
-    stock.quantity = quantity;
-    ingredient.stock = stock;
+    stock.companyId = req.user.companyId;
+    stock.ingredientId = ingredient.id;
+    stock.quantity = req.body.stock;
+    await stock.save();
 
-    let ingredientCreated = await ingredient.save();
+    let ingredientCreated = await Ingredient.findOne({where: {id: ingredient.id}, relations: ["stock"]});
 
     return res.json({status:200,data:ingredientCreated});
 })
@@ -37,8 +39,14 @@ router.put('/ingredients/:id',checkRoleMidlewareAdmin, async (req: Request, res:
     ingredient.name = req.body.name;
     ingredient.price = req.body.price;
     ingredient.isRemovable = req.body.isRemovable;
+    let stock = await Stock.findOne({where:{ingredientId:ingredient.id}});
+    stock.quantity = req.body.stock;
+    
+    stock.save();
 
-    let ingredientUpdated = await ingredient.save();
+    let ingredientUp = await ingredient.save();
+    let ingredientUpdated = await Ingredient.findOne({where:{id:ingredientUp.id}, relations: ["stock"]});
+
 
     return res.json({status:200,data:ingredientUpdated});
 })

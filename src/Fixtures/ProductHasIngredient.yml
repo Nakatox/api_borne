@@ -140,4 +140,40 @@ items:
     product: '@product9'
     ingredient: '@ingredient12'
 
+  productHasIngredient36:
+    product: '@product1'
+    ingredient: '@ingredient14'
+
+  productHasIngredient37:
+    product: '@product2'
+    ingredient: '@ingredient14'
+
+  productHasIngredient38:
+    product: '@product3'
+    ingredient: '@ingredient14'
+
+  productHasIngredient39:
+    product: '@product4'
+    ingredient: '@ingredient14'
+  
+  productHasIngredient40:
+    product: '@product5'
+    ingredient: '@ingredient14'
+
+  productHasIngredient41: 
+    product: '@product6'
+    ingredient: '@ingredient14'
+  
+  productHasIngredient42:
+    product: '@product7'
+    ingredient: '@ingredient14'
+
+  productHasIngredient43:
+    product: '@product8'
+    ingredient: '@ingredient14'
+  
+  productHasIngredient44:
+    product: '@product9'
+    ingredient: '@ingredient14'
+
   
